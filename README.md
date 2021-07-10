@@ -16,3 +16,25 @@ the problem its present formulation.
 There are 5 philosophers sitting around a round table eating spaghetti and each of them has one fork between them. All 5 of them sit around the table and pick up the fork placed towards their right. But, here’s the problem. To eat the spaghetti they need both the forks and since everyone picked up the fork to their right, nobody gets the left fork and hence, nobody can eat.
 
 ![Image of philo](https://static.javatpoint.com/operating-system/images/os-dining-philosophers-problem.gif)
+
+## Getting Started
+
+### Compile
+
+Just make all
+
+### Executing program
+
+Example :
+```
+./philo 4 410 300 200 
+```
+Arguments :
+* 4 is the number of philosophers, it is also the number of forks
+* 410 is the time to die, is in milliseconds, if a philosopher doesn't start eating "time to die" milliseconds after starting his last meal or the beginning of the simulation, it dies
+* 300 is the time to eat is in milliseconds and is the time it take for a philosopher to eat. During this time he will need to keep two forks.
+* 200 is the time to sleep is in milliseconds and is the time the philosopher will spend sleeping.
+* number_of_times_each_philosopher_must_eat: argument is optional, if all
+philosophers eat at least ’number_of_times_each_philosopher_must_eat’ the
+simulation will stop. If not specified, the simulation will stop only at the death
+of a philosopher.
