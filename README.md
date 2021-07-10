@@ -1,6 +1,6 @@
 # Philosophers
 
-I've never thought philosophy would be so deadly.
+*I've never thought philosophy would be so deadly.*
 
 In computer science, the dining philosophers problem is an
 example problem often used in concurrent algorithm design to
@@ -13,4 +13,6 @@ the problem its present formulation.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+There are 5 philosophers sitting around a round table eating spaghetti and each of them has one fork between them. All 5 of them sit around the table and pick up the fork placed towards their right. But, here’s the problem. To eat the spaghetti they need both the forks and since everyone picked up the fork to their right, nobody gets the left fork and hence, nobody can eat.
+
+![Image of philo](https://static.javatpoint.com/operating-system/images/os-dining-philosophers-problem.gif)
