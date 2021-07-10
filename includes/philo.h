@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:35 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/10 13:51:36 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/10 14:52:28 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ typedef struct	s_details
 	int			nb_time_must_eat;
 }				t_details;
 
-int		ft_atoi(const char *str);
-int		ft_isdigit(int c);
+int				ft_atoi(const char *str);
+int				ft_isdigit(int c);
 
-int		error_argument(void);
+int				error_argument(void);
+
+int				philo_arg_checker(char **argv);
 
 #endif

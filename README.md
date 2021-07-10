@@ -38,3 +38,10 @@ Arguments :
 philosophers eat at least ’number_of_times_each_philosopher_must_eat’ the
 simulation will stop. If not specified, the simulation will stop only at the death
 of a philosopher.
+
+### Error Code
+
+* code 29	: Wrong argument number
+* code 1	: Wrong argument syntax
+
+### Link

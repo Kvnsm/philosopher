@@ -6,7 +6,7 @@
 #    By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/10 11:31:41 by ksam              #+#    #+#              #
-#    Updated: 2021/07/10 13:48:14 by ksam             ###   ########lyon.fr    #
+#    Updated: 2021/07/10 14:36:45 by ksam             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ INCLUDE		=	includes/philo.h
 SRCS		=	srcs/philo.c \
 				srcs/ft_atoi.c \
 				srcs/ft_isdigit.c \
-				srcs/error.c
+				srcs/error.c \
+				srcs/argument_parser.c
 				
 OBJS		=	$(SRCS:.c=.o)
 CFLAGS		=	-Wall -Werror -Wextra
