@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:28 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/10 14:53:21 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/11 12:51:57 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ int main(int argc, char **argv)
 	
 	if (argc < 5 || argc > 6)
 		return(printf("Error: wrong argument number\n"));
-
-	memset(&data, -1, sizeof(data));
 	
-	if (philo_arg_checker(argv))
-		return (error_argument());
-	data.nb_philo = ft_atoi(argv[1]);
+	if (philo_arg_parser(&data, argv, argc))
+		return(error_argument());
+
 	return (0);
 }

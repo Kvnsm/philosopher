@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:35 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/10 14:52:28 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/11 12:46:30 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int				ft_isdigit(int c);
 int				error_argument(void);
 
 int				philo_arg_checker(char **argv);
+int				philo_arg_parser(t_details *data, char **argv, int argc);
 
 #endif
