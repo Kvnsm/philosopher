@@ -45,3 +45,7 @@ of a philosopher.
 * code 1	: Wrong argument syntax
 
 ### Link
+
+[Understand pthreads (french version)](https://franckh.developpez.com/tutoriels/posix/pthreads)
+[All videos of Code Vault to understand pthreads (english version)](https://youtu.be/d9s_d28yJq0)
+[Difference between Binary Semaphores and Mutexes](https://youtu.be/ZpRN3XQY4AA)

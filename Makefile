@@ -6,7 +6,7 @@
 #    By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/10 11:31:41 by ksam              #+#    #+#              #
-#    Updated: 2021/07/10 14:36:45 by ksam             ###   ########lyon.fr    #
+#    Updated: 2021/07/11 18:42:48 by ksam             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS		=	srcs/philo.c \
 				srcs/argument_parser.c
 				
 OBJS		=	$(SRCS:.c=.o)
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -g -pthread
 
 all:		$(NAME)
 
