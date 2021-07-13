@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 15:27:39 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/11 21:57:04 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/13 19:19:59 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,48 +19,76 @@
 
 #define NB_PHILO 5
 
+void	ft_bzero(void *s, size_t n)
+{
+	size_t		i;
+	char		*str;
+
+	i = 0;
+	str = s;
+	while (i < n)
+		str[i++] = 0;
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*tab;
+	size_t	stock;
+
+	stock = count * size;
+	if (!(tab = malloc(stock)))
+		return (NULL);
+	ft_bzero(tab, stock);
+	return (tab);
+}
+
 typedef struct	s_philo_stuff
 {
-	int			*id;
-	int			j;
+	int				id;
+	struct s_master	*box;
 	
 }				t_philo_stuff;
 
-void	*routine(void *arg)
+typedef struct	s_master
 {
-	t_philo_stuff *copy;
+	t_philo_stuff	*philos;
+}				t_master;
 
-	// usleep(1000);
+void	*philosophe(void *arg)
+{
+	t_master	*copy;
+
 	copy = arg;
-	printf("Philosopher %d is created\n", copy->j);
+	printf("Je suis un test %d\n", copy->philos->id);
 }
 
 int main()
 {
-	pthread_t		th[NB_PHILO];
-	int 			i;
-	t_philo_stuff 	stuff;
-
-	memset(&stuff, 0, sizeof(stuff));
-
-	stuff.id = malloc(sizeof(int) * NB_PHILO); // to free
-
+	t_master	box;
+	int			i;
+	pthread_t	th[NB_PHILO];
 
 	i = 0;
-	while (i < NB_PHILO)
+	box.philos = malloc(sizeof(*(box.philos)) * NB_PHILO);
+	if (box.philos == NULL)
+		return (-1);
+
+	while (i < NB_PHILO);
 	{
-		stuff.id[i] = i + 1;
-		stuff.j = i + 1;
-		if (pthread_create(&th[i], NULL, &routine, &stuff) != 0)
-			return (1);
+		box.philos[i].id = i;
+		box.philos[i].box = &box;
 		i++;
 	}
-
 	i = 0;
 	while (i < NB_PHILO)
 	{
-		if (pthread_join(th[i], NULL) != 0)
-			return (1);
+		pthread_create(&th[i], NULL, &philosophe, &box);
+		i++;
+	}
+	i = 0;
+	while (i < NB_PHILO)
+	{
+		pthread_join(th[i], NULL);
 		i++;
 	}
 	return (0);

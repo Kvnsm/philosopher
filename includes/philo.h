@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:35 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/11 12:46:30 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/13 18:08:23 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct	s_details
 
 int				ft_atoi(const char *str);
 int				ft_isdigit(int c);
+void			*ft_calloc(size_t count, size_t size);
+void			ft_bzero(void *s, size_t n);
 
 int				error_argument(void);
 
