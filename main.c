@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 15:27:39 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/13 19:19:59 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/14 20:04:24 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,6 @@
 
 #define NB_PHILO 5
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t		i;
-	char		*str;
-
-	i = 0;
-	str = s;
-	while (i < n)
-		str[i++] = 0;
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*tab;
-	size_t	stock;
-
-	stock = count * size;
-	if (!(tab = malloc(stock)))
-		return (NULL);
-	ft_bzero(tab, stock);
-	return (tab);
-}
-
 typedef struct	s_philo_stuff
 {
 	int				id;
@@ -52,37 +29,63 @@ typedef struct	s_philo_stuff
 typedef struct	s_master
 {
 	t_philo_stuff	*philos;
+	pthread_mutex_t	forks[NB_PHILO];
+
 }				t_master;
+
+void	manger(int id)
+{
+	printf("Philosophe [%d] mange\n", id);
+	sleep(5);
+}
 
 void	*philosophe(void *arg)
 {
-	t_master	*copy;
+	t_philo_stuff	*copy;
+	t_master		*box;
+	int				left;
+	int				right;
 
 	copy = arg;
-	printf("Je suis un test %d\n", copy->philos->id);
+	box = copy->box;
+	left = copy->id;
+	right = (left + 1) % NB_PHILO;
+	
+	while (1)
+	{
+		printf("Philosophe [%d] pense \n", box->philos[copy->id].id + 1);
+		pthread_mutex_lock(&box->forks[left]);
+		pthread_mutex_lock(&box->forks[right]);
+		manger(box->philos[copy->id].id + 1);
+		pthread_mutex_unlock(&box->forks[left]);
+		pthread_mutex_unlock(&box->forks[right]);
+	}
+	return (NULL);
 }
 
 int main()
 {
-	t_master	box;
-	int			i;
-	pthread_t	th[NB_PHILO];
+	t_master		box;
+	int				i;
+	pthread_t		th[NB_PHILO];
 
 	i = 0;
 	box.philos = malloc(sizeof(*(box.philos)) * NB_PHILO);
 	if (box.philos == NULL)
 		return (-1);
-
-	while (i < NB_PHILO);
+		
+	while (i < NB_PHILO)
 	{
 		box.philos[i].id = i;
 		box.philos[i].box = &box;
+		pthread_mutex_init(&box.forks[i], NULL);
 		i++;
 	}
 	i = 0;
 	while (i < NB_PHILO)
 	{
-		pthread_create(&th[i], NULL, &philosophe, &box);
+		if (pthread_create(&th[i], NULL, &philosophe, &box.philos[i]) != 0)
+			return (1);
 		i++;
 	}
 	i = 0;
