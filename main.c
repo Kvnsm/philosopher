@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 15:27:39 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/14 20:04:24 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/14 20:42:12 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	s_master
 void	manger(int id)
 {
 	printf("Philosophe [%d] mange\n", id);
-	sleep(5);
+	sleep(2);
 }
 
 void	*philosophe(void *arg)
@@ -79,11 +79,6 @@ int main()
 		box.philos[i].id = i;
 		box.philos[i].box = &box;
 		pthread_mutex_init(&box.forks[i], NULL);
-		i++;
-	}
-	i = 0;
-	while (i < NB_PHILO)
-	{
 		if (pthread_create(&th[i], NULL, &philosophe, &box.philos[i]) != 0)
 			return (1);
 		i++;

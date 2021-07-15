@@ -43,6 +43,7 @@ of a philosopher.
 
 * code 29	: Wrong argument number
 * code 1	: Wrong argument syntax
+* code 2	: Memory allocation failed
 
 ### Link
 

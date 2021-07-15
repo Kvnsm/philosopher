@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 14:36:50 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/11 12:51:50 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/15 02:27:29 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ int		philo_arg_parser(t_details *data, char **argv, int argc)
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
-		data->nb_time_must_eat = ft_atoi(argv[5]);
-	return (0);
+		data->must_eat_counter = ft_atoi(argv[5]);
+	else
+		data->must_eat_counter = 0;
+	// Protection si il existe qu'un seul philo ? 1 fourchette ?
+
+	// data->forks = NULL; // ???
+	
+	data->philos = NULL;
+	data->philos = malloc(sizeof(*(data->philos)) * data->nb_philo);
+	if (data->philos == NULL)
+		return (2);
+	init_philo(data);
+	return (init_mutexes(data));
 }
