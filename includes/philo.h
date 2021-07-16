@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:35 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 14:15:52 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 17:20:50 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ void			init_philo(t_details *data);
 int				init_mutexes(t_details *data);
 void			*philosophe(void *arg);
 int				thread_spawn(t_details *data);
+
+void			display_messages(t_philo_stuff *philo, int code);
 
 #endif
