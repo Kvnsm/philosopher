@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:35 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 17:20:50 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 18:36:52 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int				error_messages(int code);
 int				error_malloc(void);
 int				error_argument(void);
 int				error_pthread(void);
+int				error_nb_philo(void);
 
 int				philo_arg_checker(char **argv);
 int				philo_arg_parser(t_details *data, char **argv, int argc);

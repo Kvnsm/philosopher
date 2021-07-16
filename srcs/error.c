@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 13:48:20 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 02:54:48 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 18:36:40 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		error_messages(int code)
 		return(error_malloc());
 	else if (code == 3)
 		return(error_pthread());
+	else if (code == 4)
+		return(error_nb_philo());
 	return (-1);
 }
 
@@ -39,4 +41,10 @@ int		error_pthread(void)
 {
 	printf("Error: pthread failled\n");
 	return (3);
+}
+
+int		error_nb_philo(void)
+{
+	printf("Error: Number philo can't be 0\n");
+	return (4);
 }

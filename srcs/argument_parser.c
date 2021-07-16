@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 14:36:50 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/15 02:27:29 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 18:36:14 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ int		philo_arg_checker(char **argv)
 
 int		philo_arg_parser(t_details *data, char **argv, int argc)
 {
-	memset(data, -1, sizeof(data));
+	memset(data, -1, sizeof(*data));
 	if (philo_arg_checker(argv))
 		return (1);
 	data->nb_philo = ft_atoi(argv[1]);
+	if (data->nb_philo == 0)
+		return(4);
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
