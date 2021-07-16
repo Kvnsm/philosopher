@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:35 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 18:36:52 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 19:19:36 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ typedef struct			s_details
 	long				time_to_eat;
 	long				time_to_sleep;
 	int					must_eat_counter;
-	int					die;
+	int					philo_full_counter;
 
 	t_philo_stuff		*philos;
 	pthread_mutex_t		*forks;
+	pthread_mutex_t		blabla;
 
 	long				start_timer;
 

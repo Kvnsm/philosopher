@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 14:36:50 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 18:36:14 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 19:08:13 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int		philo_arg_parser(t_details *data, char **argv, int argc)
 	data->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		data->must_eat_counter = ft_atoi(argv[5]);
-	else
-		data->must_eat_counter = 0;
+	data->philo_full_counter = 0;
 	// Protection si il existe qu'un seul philo ? 1 fourchette ?
 
 	// data->forks = NULL; // ???

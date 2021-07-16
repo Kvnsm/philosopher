@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 20:37:46 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 18:24:03 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 19:10:35 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	manger(t_philo_stuff *philo)
 	philo->last_meal = get_time();
 	philo->limit_time = philo->last_meal + philo->details->time_to_die;
 	display_messages(philo, 1);
+	++philo->eat_counter;
 	usleep(philo->details->time_to_eat * 1000);
 }
 
@@ -46,6 +47,12 @@ void	*philosophe(void *arg)
 		
 		pthread_mutex_unlock(&copy->details->forks[copy->lfork]);
 		pthread_mutex_unlock(&copy->details->forks[copy->rfork]);
+
+		if (copy->eat_counter == copy->details->must_eat_counter)
+		{
+			copy->details->philo_full_counter++;
+			break;
+		}
 
 		dormir(copy);
 

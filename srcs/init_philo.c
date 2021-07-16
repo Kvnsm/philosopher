@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 02:12:24 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 13:32:39 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 19:20:56 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int		init_mutexes(t_details *data)
 	i = 0;
 	while (i < data->nb_philo)
 		pthread_mutex_init(&data->forks[i++], NULL);
+	pthread_mutex_init(&data->blabla, NULL);
 	return (0);
 }

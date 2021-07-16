@@ -45,6 +45,13 @@ of a philosopher.
 * code 1	: Wrong argument syntax
 * code 2	: Memory allocation failed
 * code 3	: Pthread creation failed
+* code 4	: Wrong number philo arg
+
+### To test
+
+* ./philo 4 410 200 200 (alive)
+* ./philo 5 800 200 200 (alive)
+* ./philo 4 410 300 200 (death)
 
 ### Link
 

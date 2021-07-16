@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 02:02:47 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 18:33:33 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 19:23:18 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int		thread_spawn(t_details *data)
 		i++;
 	}
 	i = 0;
-	while (data->die == -1)
+	while (data->nb_philo != data->philo_full_counter)
 	{
-		if (get_time() > data->philos[i].limit_time)
+		if (data->must_eat_counter != data->philos[i].eat_counter && \
+							get_time() > data->philos[i].limit_time)
 		{
 			display_messages(&data->philos[i], 5);
 			break;
@@ -46,6 +47,7 @@ int		thread_spawn(t_details *data)
 		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
+	pthread_mutex_destroy(&data->blabla);
 	free(th);
 	free(data->forks);
 	return (0);
