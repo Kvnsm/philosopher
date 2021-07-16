@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:35 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/15 02:23:44 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 02:58:32 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ void			ft_bzero(void *s, size_t n);
 int				error_messages(int code);
 int				error_malloc(void);
 int				error_argument(void);
+int				error_pthread(void);
 
 int				philo_arg_checker(char **argv);
 int				philo_arg_parser(t_details *data, char **argv, int argc);
 int				init_mutexes(t_details *data);
 void			init_philo(t_details *data);
 void			*philosophe(void *arg);
+int				thread_spawn(t_details *data);
 
 #endif

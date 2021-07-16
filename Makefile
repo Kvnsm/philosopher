@@ -6,7 +6,7 @@
 #    By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/10 11:31:41 by ksam              #+#    #+#              #
-#    Updated: 2021/07/15 02:12:43 by ksam             ###   ########lyon.fr    #
+#    Updated: 2021/07/16 02:58:56 by ksam             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS		=	srcs/philo.c \
 				srcs/ft_calloc.c \
 				srcs/ft_isdigit.c \
 				srcs/init_philo.c \
-				srcs/routine.c
+				srcs/routine.c \
+				srcs/thread_spawn.c
 				
 OBJS		=	$(SRCS:.c=.o)
 CFLAGS		=	-Wall -Werror -Wextra -g -pthread

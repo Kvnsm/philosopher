@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   thread_spawn.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/10 13:48:20 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 02:54:48 by ksam             ###   ########lyon.fr   */
+/*   Created: 2021/07/16 02:02:47 by ksam              #+#    #+#             */
+/*   Updated: 2021/07/16 03:09:04 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int		error_messages(int code)
+int		thread_spawn(t_details *data)
 {
-	if (code == 1)
-		return (error_argument());
-	else if (code == 2)
-		return(error_malloc());
-	else if (code == 3)
-		return(error_pthread());
-	return (-1);
-}
+	pthread_t	*th;
+	int			i;
 
-int		error_argument(void)
-{
-	printf("Error: wrong argument syntax");
-	return (1);
-}
+	i = 0;
+	th = malloc(sizeof(th) * data->nb_philo);
+	if (th == NULL)
+		return (2);
+	while (i < data->nb_philo)
+	{
+		if (pthread_create(&th[i], NULL, &philosophe, &data->philos[i]) != 0)
+			return (3);
+		usleep(50);
+		i++;
+	}
 
-int		error_malloc(void)
-{
-	printf("Error: malloc failled\n");
-	return (2);
-}
-
-int		error_pthread(void)
-{
-	printf("Error: pthread failled\n");
-	return (3);
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		pthread_join(th[i], NULL);
+		pthread_mutex_destroy(&data->forks[i]);
+		i++;
+	}
+	free(th);
+	return (0);
 }
