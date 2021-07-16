@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 02:12:24 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/15 02:26:30 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 13:32:39 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_philo(t_details *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		data->philos[i].is_eating = 0;
+		data->philos[i].last_meal = get_time();
 		data->philos[i].id = i;
 		data->philos[i].lfork = i;
 		data->philos[i].rfork = (i + 1) % data->nb_philo;

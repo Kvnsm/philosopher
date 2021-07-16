@@ -6,39 +6,57 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 20:37:46 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/14 21:01:45 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 14:57:40 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	manger(int id)
+void	manger(t_philo_stuff *philo)
 {
-	printf("Philosophe [%d] is eating\n", id);
-	// sleep(1);
+	philo->last_meal = get_time();
+	philo->limit_time = philo->last_meal + philo->details->time_to_die;
+	printf("Philosophe [%d] is eating\n", philo->id + 1);
+	usleep(philo->details->time_to_eat * 1000);
 }
 
+void	dormir(t_philo_stuff *philo)
+{
+	printf("Philosophe [%d] is sleeping\n", philo->id + 1);
+	usleep(philo->details->time_to_sleep * 1000);
+}
 void	*philosophe(void *arg)
 {
 	t_philo_stuff	*copy;
-	t_details		*data;
-	int				left;
-	int				right;
-
+	
 	copy = arg;
-	data = copy->details;
-	left = copy->id;
-	right = (left + 1) % data->nb_philo;
+	copy->limit_time = copy->last_meal + copy->details->time_to_die;
 
 	while (1)
 	{
-		printf("Philosophe [%d] is thinking\n", data->philos[copy->id].id + 1);
-		pthread_mutex_lock(&data->forks[left]);
-		pthread_mutex_lock(&data->forks[right]);
-		manger(data->philos[copy->id].id + 1);
-		pthread_mutex_unlock(&data->forks[right]);
-		pthread_mutex_unlock(&data->forks[right]);
-		// dormir
+		if (get_time() > copy->limit_time)
+		{
+			long test;
+			test = get_time() - copy->details->start_timer;
+			printf("%ld \t [%d] have to die now ! \n", test, copy->id + 1);
+			copy->details->die = 1;
+			break;
+		}
+		pthread_mutex_lock(&copy->details->forks[copy->lfork]);
+		printf("Philosophe [%d] has taken a Lfork\n", copy->id + 1);
+		pthread_mutex_lock(&copy->details->forks[copy->rfork]);
+		printf("Philosophe [%d] has taken a Rfork\n", copy->id + 1);
+
+
+		manger(copy);
+
+		
+		pthread_mutex_unlock(&copy->details->forks[copy->lfork]);
+		pthread_mutex_unlock(&copy->details->forks[copy->rfork]);
+
+		dormir(copy);
+		printf("Philosophe [%d] is thinking\n", copy->id + 1);
+
 	}
-	return (NULL);
+	return (0);
 }

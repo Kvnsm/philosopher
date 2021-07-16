@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 02:02:47 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 03:09:04 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/16 14:18:17 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int		thread_spawn(t_details *data)
 	th = malloc(sizeof(th) * data->nb_philo);
 	if (th == NULL)
 		return (2);
+	data->start_timer = get_time();
 	while (i < data->nb_philo)
 	{
 		if (pthread_create(&th[i], NULL, &philosophe, &data->philos[i]) != 0)
 			return (3);
-		usleep(50);
+		usleep(100);
 		i++;
 	}
 
@@ -37,5 +38,6 @@ int		thread_spawn(t_details *data)
 		i++;
 	}
 	free(th);
+	free(data->forks);
 	return (0);
 }
