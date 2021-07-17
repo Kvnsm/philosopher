@@ -6,7 +6,7 @@
 #    By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/10 11:31:41 by ksam              #+#    #+#              #
-#    Updated: 2021/07/17 08:03:20 by ksam             ###   ########lyon.fr    #
+#    Updated: 2021/07/17 10:25:39 by ksam             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ $(NAME):	$(OBJS)	$(INCLUDE)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 .c.o:
-			$(CC) $(FLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 			rm -f $(OBJS)
