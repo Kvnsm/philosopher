@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:39:28 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/17 10:19:20 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/17 10:42:59 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ int	main(int argc, char **argv)
 		return (error_messages(ret));
 	ret = thread_spawn(&data);
 	if (ret)
-	{
-		free(data.philos);
 		return (error_messages(ret));
-	}
-	free(data.philos);
 	return (0);
 }
