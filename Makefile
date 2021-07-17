@@ -6,7 +6,7 @@
 #    By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/10 11:31:41 by ksam              #+#    #+#              #
-#    Updated: 2021/07/17 07:42:26 by ksam             ###   ########lyon.fr    #
+#    Updated: 2021/07/17 08:03:20 by ksam             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS		=	srcs/philo.c \
 				srcs/timer.c
 				
 OBJS		=	$(SRCS:.c=.o)
-CFLAGS		=	-Wall -Werror -Wextra -g3 -fsanitize=address -pthread
+CFLAGS		=	-Wall -Werror -Wextra -pthread
 
 all:		$(NAME)
 
