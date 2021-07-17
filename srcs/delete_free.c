@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   delete_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/10 11:39:28 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/17 07:35:21 by ksam             ###   ########lyon.fr   */
+/*   Created: 2021/07/17 07:11:39 by ksam              #+#    #+#             */
+/*   Updated: 2021/07/17 07:48:24 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char **argv)
+void	clean_all(t_details *data, pthread_t *th)
 {
-	t_details	data;
-	int			i;
-	int			ret;
+	int	i;
 
-	if (argc < 5 || argc > 6)
-		return (printf("Error: wrong argument number\n"));
-	ret = philo_arg_parser(&data, argv, argc);
-	if (ret)
-		return (error_messages(ret));
-	ret = thread_spawn(&data);
-	if (ret)
+	i = 0;
+	if (data->forks != NULL)
 	{
-		free(data.philos);
-		return (error_messages(ret));
+		while (i < data->nb_philo)
+		{
+			pthread_mutex_destroy(&data->forks[i]);
+			i++;
+		}
+		free(data->forks);
 	}
-	free(data.philos);
-	return (0);
+	pthread_mutex_destroy(&data->blabla);
+	if (th)
+		free(th);
 }

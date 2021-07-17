@@ -6,13 +6,13 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 13:13:32 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/10 13:13:57 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/17 06:49:52 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int		i;
 	int		signe;
@@ -21,8 +21,8 @@ int		ft_atoi(const char *str)
 	i = 0;
 	signe = 1;
 	nb = 0;
-	while (str[i] == '\f' || str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
-			|| str[i] == '\v' || str[i] == ' ')
+	while (str[i] == '\f' || str[i] == '\t' || str[i] == '\n' || str[i] == '\r' \
+											|| str[i] == '\v' || str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')

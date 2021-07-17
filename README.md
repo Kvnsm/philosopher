@@ -27,14 +27,14 @@ Just make all
 
 Example :
 ```
-./philo 4 410 300 200 
+./philo 4 410 200 200 5
 ```
 Arguments :
 * 4 is the number of philosophers, it is also the number of forks
 * 410 is the time to die, is in milliseconds, if a philosopher doesn't start eating "time to die" milliseconds after starting his last meal or the beginning of the simulation, it dies
 * 300 is the time to eat is in milliseconds and is the time it take for a philosopher to eat. During this time he will need to keep two forks.
 * 200 is the time to sleep is in milliseconds and is the time the philosopher will spend sleeping.
-* number_of_times_each_philosopher_must_eat: argument is optional, if all
+* number of times each philosopher must eat: argument is optional, if all
 philosophers eat at least ’number_of_times_each_philosopher_must_eat’ the
 simulation will stop. If not specified, the simulation will stop only at the death
 of a philosopher.
@@ -58,3 +58,5 @@ of a philosopher.
 * [Understand pthreads (french version)](https://franckh.developpez.com/tutoriels/posix/pthreads)
 * [All videos of Code Vault to understand pthreads (english version)](https://youtu.be/d9s_d28yJq0)
 * [Difference between Binary Semaphores and Mutexes](https://youtu.be/ZpRN3XQY4AA)
+* [How to create a timer in C](https://stackoverflow.com/questions/2150291/how-do-i-measure-a-time-interval-in-c)
+* [Boring document](https://hpc-tutorials.llnl.gov/posix/#AppendixA)

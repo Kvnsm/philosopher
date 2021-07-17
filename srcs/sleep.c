@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   sleep.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/10 11:39:28 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/17 07:35:21 by ksam             ###   ########lyon.fr   */
+/*   Created: 2021/07/17 07:38:19 by ksam              #+#    #+#             */
+/*   Updated: 2021/07/17 07:38:31 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char **argv)
+void	dormir(t_philo_stuff *philo)
 {
-	t_details	data;
-	int			i;
-	int			ret;
-
-	if (argc < 5 || argc > 6)
-		return (printf("Error: wrong argument number\n"));
-	ret = philo_arg_parser(&data, argv, argc);
-	if (ret)
-		return (error_messages(ret));
-	ret = thread_spawn(&data);
-	if (ret)
-	{
-		free(data.philos);
-		return (error_messages(ret));
-	}
-	free(data.philos);
-	return (0);
+	display_messages(philo, 2);
+	usleep(philo->details->time_to_sleep * 1000);
 }

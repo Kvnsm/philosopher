@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   forks_m.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/10 11:39:28 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/17 07:35:21 by ksam             ###   ########lyon.fr   */
+/*   Created: 2021/07/17 07:40:26 by ksam              #+#    #+#             */
+/*   Updated: 2021/07/17 07:45:19 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char **argv)
+void	mutex_forks(t_philo_stuff *copy)
 {
-	t_details	data;
-	int			i;
-	int			ret;
+	pthread_mutex_lock(&copy->details->forks[copy->lfork]);
+	display_messages(copy, 3);
+	pthread_mutex_lock(&copy->details->forks[copy->rfork]);
+	display_messages(copy, 3);
+}
 
-	if (argc < 5 || argc > 6)
-		return (printf("Error: wrong argument number\n"));
-	ret = philo_arg_parser(&data, argv, argc);
-	if (ret)
-		return (error_messages(ret));
-	ret = thread_spawn(&data);
-	if (ret)
-	{
-		free(data.philos);
-		return (error_messages(ret));
-	}
-	free(data.philos);
-	return (0);
+void	unmutex_forks(t_philo_stuff *copy)
+{
+	pthread_mutex_unlock(&copy->details->forks[copy->lfork]);
+	pthread_mutex_unlock(&copy->details->forks[copy->rfork]);
 }

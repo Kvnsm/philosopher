@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   eat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/10 11:39:28 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/17 07:35:21 by ksam             ###   ########lyon.fr   */
+/*   Created: 2021/07/17 07:37:29 by ksam              #+#    #+#             */
+/*   Updated: 2021/07/17 07:37:39 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char **argv)
+void	manger(t_philo_stuff *philo)
 {
-	t_details	data;
-	int			i;
-	int			ret;
-
-	if (argc < 5 || argc > 6)
-		return (printf("Error: wrong argument number\n"));
-	ret = philo_arg_parser(&data, argv, argc);
-	if (ret)
-		return (error_messages(ret));
-	ret = thread_spawn(&data);
-	if (ret)
-	{
-		free(data.philos);
-		return (error_messages(ret));
-	}
-	free(data.philos);
-	return (0);
+	philo->last_meal = get_time();
+	philo->limit_time = philo->last_meal + philo->details->time_to_die;
+	display_messages(philo, 1);
+	++philo->eat_counter;
+	usleep(philo->details->time_to_eat * 1000);
 }

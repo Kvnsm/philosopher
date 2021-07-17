@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 18:06:54 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/13 18:07:17 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/17 06:51:36 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	stock;
 
 	stock = count * size;
-	if (!(tab = malloc(stock)))
+	tab = malloc(stock);
+	if (!tab)
 		return (NULL);
 	ft_bzero(tab, stock);
 	return (tab);

@@ -6,12 +6,11 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 02:12:24 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/16 19:20:56 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/17 07:36:27 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
 
 void	init_philo(t_details *data)
 {
@@ -30,7 +29,7 @@ void	init_philo(t_details *data)
 	}
 }
 
-int		init_mutexes(t_details *data)
+int	init_mutexes(t_details *data)
 {
 	int	i;
 
