@@ -6,7 +6,7 @@
 /*   By: ksam <ksam@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 02:02:47 by ksam              #+#    #+#             */
-/*   Updated: 2021/07/17 10:47:09 by ksam             ###   ########lyon.fr   */
+/*   Updated: 2021/07/19 13:59:00 by ksam             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	start_pthreads(pthread_t *th, t_details *data)
 		if (pthread_create(&th[i], NULL, &philosophe, &data->philos[i]) != 0)
 			return (3);
 		pthread_detach(th[i]);
-		usleep(100);
+		usleep(50);
 		i++;
 	}
 	return (0);
@@ -41,6 +41,7 @@ void	check_philo_alive(t_details *data)
 			display_messages(&data->philos[i], 5);
 			break ;
 		}
+		usleep(50);
 		i = (i + 1) % data->nb_philo;
 	}
 }
